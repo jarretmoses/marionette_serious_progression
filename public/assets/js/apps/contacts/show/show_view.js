@@ -13,6 +13,16 @@ ContactManager.module("ContactsApp.Show", function(Show, ContactManager, Backbon
     editClicked: function(e){
       e.preventDefault();
       this.trigger("contact:edit", this.model);
+    },
+
+    serializeData: function() {
+
+      var attr = _.clone(this.model.attributes);
+      attr.avatarUrl = attr['avatar-url'];
+
+      delete attr['avatar-url'];
+      console.log(attr);
+      return attr;
     }
   });
 });
