@@ -1,5 +1,5 @@
 ContactManager.module("Entities", function(Entities, ContactManager, Backbone, Marionette, $, _){
-  Entities.Contact = Backbone.Model.extend({
+  Entities.Contact = Entities.BaseModel.extend({
     urlRoot: "contacts_legacy",
 
     defaults: {
@@ -40,11 +40,11 @@ ContactManager.module("Entities", function(Entities, ContactManager, Backbone, M
       }
     },
 
-    toJSON: function() {
+    sync: function(method, model, options) {
 
-      return {
-        data: _.clone(this.attributes)
-      }
+      console.log("Contact's sync function called.");
+
+      return Entities.BaseModel.prototype.sync.call(this, method, model, options);
     }
   });
 
